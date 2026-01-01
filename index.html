@@ -1,339 +1,270 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Commenta | Social Engagement Platform</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Commenta | Social Engagement Platform</title>
 
-    <style>
-        /* RESET */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<style>
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+    font-family:'Segoe UI',sans-serif;
+    background:#f4f7fb;
+    color:#222;
+    line-height:1.6;
+}
 
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            background: #f6f8fb;
-            color: #333;
-            line-height: 1.6;
-        }
+/* GLOBAL */
+.container{width:90%;max-width:1200px;margin:auto}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:25px}
+.section-title{text-align:center;font-size:2.2rem;margin-bottom:50px}
 
-        a {
-            text-decoration: none;
-        }
+/* NAVBAR */
+.navbar{
+    position:fixed;
+    top:0;
+    width:100%;
+    z-index:1000;
+    background:rgba(13,71,161,0.9);
+    backdrop-filter:blur(10px);
+    transition:.3s;
+}
+.navbar.scrolled{box-shadow:0 4px 20px rgba(0,0,0,.15)}
+.navbar .container{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 0;
+}
+.logo{
+    color:#fff;
+    font-size:1.8rem;
+    font-weight:700;
+    letter-spacing:1px;
+}
+.nav-menu{
+    list-style:none;
+    display:flex;
+    gap:20px;
+    align-items:center;
+}
+.nav-menu a{
+    color:#fff;
+    font-weight:500;
+    transition:.3s;
+}
+.nav-menu a:hover{color:#ffccbc}
 
-        .container {
-            width: 90%;
-            max-width: 1100px;
-            margin: auto;
-        }
+/* BUTTON */
+.btn-primary,.btn-outline{
+    padding:9px 18px;
+    border-radius:30px;
+    transition:.3s;
+}
+.btn-primary{
+    background:#ff5722;
+    color:#fff;
+}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(255,87,34,.4)}
+.btn-outline{
+    border:1px solid #fff;
+    color:#fff;
+}
+.btn-outline:hover{background:#fff;color:#0d47a1}
 
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
+/* HERO */
+.hero{
+    padding:140px 0 90px;
+    background:linear-gradient(135deg,#1976d2,#0d47a1);
+    color:#fff;
+    text-align:center;
+}
+.hero h1{
+    font-size:3rem;
+    margin-bottom:20px;
+    animation:fadeUp 1s ease;
+}
+.hero p{
+    max-width:700px;
+    margin:auto auto 30px;
+    opacity:.95;
+    animation:fadeUp 1.3s ease;
+}
+.hero-btn a{margin:0 10px}
 
-        .section-title {
-            text-align: center;
-            margin-bottom: 40px;
-            font-size: 2rem;
-        }
+/* STATS */
+.stats{
+    background:#fff;
+    padding:70px 0;
+}
+.stat-box{
+    text-align:center;
+    padding:25px;
+    border-radius:16px;
+    transition:.3s;
+}
+.stat-box:hover{
+    transform:translateY(-8px);
+    box-shadow:0 15px 30px rgba(0,0,0,.1);
+}
+.stat-box h2{
+    color:#1976d2;
+    font-size:2.4rem;
+}
 
-        /* NAVBAR */
-        .navbar {
-            background: #0d47a1;
-            padding: 15px 0;
-        }
+/* SERVICES */
+.services{padding:90px 0}
+.service-card{
+    background:#fff;
+    padding:30px;
+    border-radius:18px;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    transition:.4s;
+}
+.service-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 20px 40px rgba(0,0,0,.15);
+}
 
-        .navbar .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+/* HOW IT WORKS */
+.how-it-works{
+    background:#eef3fb;
+    padding:90px 0;
+}
+.step{
+    background:#fff;
+    padding:30px;
+    border-radius:18px;
+    text-align:center;
+    transition:.4s;
+}
+.step:hover{
+    transform:scale(1.05);
+}
+.step span{
+    display:inline-block;
+    width:45px;
+    height:45px;
+    line-height:45px;
+    border-radius:50%;
+    background:#1976d2;
+    color:#fff;
+    font-weight:bold;
+    margin-bottom:15px;
+}
 
-        .logo {
-            color: #fff;
-            font-size: 1.8rem;
-            font-weight: bold;
-        }
+/* FOOTER */
+.footer{
+    background:#0d47a1;
+    color:#fff;
+    padding:60px 0 20px;
+}
+.footer-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:30px;
+}
+.footer a{color:#ffeb3b}
+.footer ul{list-style:none}
+.copyright{
+    text-align:center;
+    margin-top:30px;
+    font-size:.9rem;
+    opacity:.8;
+}
 
-        .nav-menu {
-            list-style: none;
-            display: flex;
-            gap: 20px;
-            align-items: center;
-        }
+/* ANIMATION */
+@keyframes fadeUp{
+    from{opacity:0;transform:translateY(40px)}
+    to{opacity:1;transform:translateY(0)}
+}
 
-        .nav-menu a {
-            color: #fff;
-            font-weight: 500;
-        }
-
-        /* BUTTON */
-        .btn-primary {
-            background: #ff5722;
-            color: #fff;
-            padding: 8px 16px;
-            border-radius: 5px;
-        }
-
-        .btn-outline {
-            border: 1px solid #fff;
-            color: #fff;
-            padding: 8px 16px;
-            border-radius: 5px;
-        }
-
-        /* HERO */
-        .hero {
-            background: linear-gradient(to right, #1976d2, #0d47a1);
-            color: #fff;
-            padding: 80px 0;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 2.8rem;
-            margin-bottom: 15px;
-        }
-
-        .hero p {
-            max-width: 700px;
-            margin: auto;
-            margin-bottom: 25px;
-        }
-
-        .hero-btn a {
-            margin: 0 10px;
-            display: inline-block;
-        }
-
-        /* STATS */
-        .stats {
-            background: #fff;
-            padding: 40px 0;
-        }
-
-        .stat-box {
-            text-align: center;
-        }
-
-        .stat-box h2 {
-            color: #1976d2;
-            font-size: 2.2rem;
-        }
-
-        /* SERVICES */
-        .services {
-            padding: 60px 0;
-        }
-
-        .service-card {
-            background: #fff;
-            padding: 25px;
-            border-radius: 8px;
-            box-shadow: 0 5px 10px rgba(0,0,0,0.08);
-            text-align: center;
-        }
-
-        /* HOW IT WORKS */
-        .how-it-works {
-            background: #eef3fb;
-            padding: 60px 0;
-        }
-
-        .step {
-            text-align: center;
-        }
-
-        .step span {
-            display: inline-block;
-            background: #1976d2;
-            color: #fff;
-            width: 40px;
-            height: 40px;
-            line-height: 40px;
-            border-radius: 50%;
-            margin-bottom: 10px;
-        }
-
-        /* FOOTER */
-        .footer {
-            background: #0d47a1;
-            color: #fff;
-            padding: 40px 0 20px;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-        }
-
-        .footer ul {
-            list-style: none;
-        }
-
-        .footer a {
-            color: #ffeb3b;
-        }
-
-        .copyright {
-            text-align: center;
-            margin-top: 20px;
-            font-size: 0.9rem;
-        }
-
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            .grid-3 {
-                grid-template-columns: 1fr;
-            }
-
-            .navbar .container {
-                flex-direction: column;
-            }
-
-            .nav-menu {
-                flex-wrap: wrap;
-                justify-content: center;
-                margin-top: 10px;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-        }
-    </style>
+/* RESPONSIVE */
+@media(max-width:900px){
+    .grid-3{grid-template-columns:1fr}
+    .nav-menu{flex-wrap:wrap;justify-content:center}
+    .hero h1{font-size:2.2rem}
+    .hero{padding-top:120px}
+}
+</style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
 <header class="navbar">
-    <div class="container">
-        <div class="logo">Commenta</div>
-        <ul class="nav-menu">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Layanan</a></li>
-            <li><a href="#">Cara Kerja</a></li>
-            <li><a href="#">Harga</a></li>
-            <li><a href="#" class="btn-outline">Login</a></li>
-            <li><a href="#" class="btn-primary">Daftar</a></li>
-        </ul>
-    </div>
+<div class="container">
+<div class="logo">Commenta</div>
+<ul class="nav-menu">
+<li><a href="#">Home</a></li>
+<li><a href="#">Layanan</a></li>
+<li><a href="#">Cara Kerja</a></li>
+<li><a href="#">Harga</a></li>
+<li><a href="#" class="btn-outline">Login</a></li>
+<li><a href="#" class="btn-primary">Daftar</a></li>
+</ul>
+</div>
 </header>
 
-<!-- HERO -->
 <section class="hero">
-    <div class="container">
-        <h1>Bangun Interaksi Nyata di Media Sosial</h1>
-        <p>
-            Commenta adalah platform engagement yang membantu meningkatkan komentar,
-            interaksi, dan kepercayaan audiens secara profesional.
-        </p>
-        <div class="hero-btn">
-            <a href="#" class="btn-primary">Mulai Sekarang</a>
-            <a href="#" class="btn-outline">Pelajari Lebih Lanjut</a>
-        </div>
-    </div>
+<div class="container">
+<h1>Bangun Interaksi Nyata di Media Sosial</h1>
+<p>Commenta membantu meningkatkan komentar, engagement, dan kepercayaan audiens dengan cara yang profesional dan aman.</p>
+<div class="hero-btn">
+<a class="btn-primary" href="#">Mulai Sekarang</a>
+<a class="btn-outline" href="#">Pelajari Lebih Lanjut</a>
+</div>
+</div>
 </section>
 
-<!-- STATS -->
 <section class="stats">
-    <div class="container grid-3">
-        <div class="stat-box">
-            <h2>250K+</h2>
-            <p>Komentator Aktif</p>
-        </div>
-        <div class="stat-box">
-            <h2>8.200+</h2>
-            <p>Komentar Hari Ini</p>
-        </div>
-        <div class="stat-box">
-            <h2>99%</h2>
-            <p>Engagement Relevan</p>
-        </div>
-    </div>
+<div class="container grid-3">
+<div class="stat-box"><h2>250K+</h2><p>Komentator Aktif</p></div>
+<div class="stat-box"><h2>8.200+</h2><p>Komentar Hari Ini</p></div>
+<div class="stat-box"><h2>99%</h2><p>Engagement Relevan</p></div>
+</div>
 </section>
 
-<!-- SERVICES -->
 <section class="services">
-    <div class="container">
-        <h2 class="section-title">Layanan Commenta</h2>
-        <div class="grid-3">
-            <div class="service-card">
-                <h3>Komentar Media Sosial</h3>
-                <p>Komentar natural, relevan, dan aman.</p>
-            </div>
-            <div class="service-card">
-                <h3>Kampanye Engagement</h3>
-                <p>Interaksi terukur untuk brand & UMKM.</p>
-            </div>
-            <div class="service-card">
-                <h3>Like & Share</h3>
-                <p>Meningkatkan jangkauan konten.</p>
-            </div>
-        </div>
-    </div>
+<div class="container">
+<h2 class="section-title">Layanan Commenta</h2>
+<div class="grid-3">
+<div class="service-card"><h3>Komentar Media Sosial</h3><p>Komentar natural & aman.</p></div>
+<div class="service-card"><h3>Kampanye Engagement</h3><p>Interaksi terukur.</p></div>
+<div class="service-card"><h3>Like & Share</h3><p>Maksimalkan jangkauan.</p></div>
+</div>
+</div>
 </section>
 
-<!-- HOW IT WORKS -->
 <section class="how-it-works">
-    <div class="container">
-        <h2 class="section-title">Cara Kerja</h2>
-        <div class="grid-3">
-            <div class="step">
-                <span>1</span>
-                <h4>Buat Kampanye</h4>
-                <p>Masukkan link postingan.</p>
-            </div>
-            <div class="step">
-                <span>2</span>
-                <h4>Distribusi</h4>
-                <p>Komentator mulai berinteraksi.</p>
-            </div>
-            <div class="step">
-                <span>3</span>
-                <h4>Hasil</h4>
-                <p>Lihat laporan engagement.</p>
-            </div>
-        </div>
-    </div>
+<div class="container">
+<h2 class="section-title">Cara Kerja</h2>
+<div class="grid-3">
+<div class="step"><span>1</span><h4>Buat Kampanye</h4><p>Masukkan link postingan.</p></div>
+<div class="step"><span>2</span><h4>Distribusi</h4><p>Komentator aktif.</p></div>
+<div class="step"><span>3</span><h4>Hasil</h4><p>Laporan real-time.</p></div>
+</div>
+</div>
 </section>
 
-<!-- FOOTER -->
 <footer class="footer">
-    <div class="container footer-grid">
-        <div>
-            <h3>Commenta</h3>
-            <p>Platform engagement media sosial terpercaya.</p>
-        </div>
-        <div>
-            <h4>Menu</h4>
-            <ul>
-                <li><a href="#">Tentang Kami</a></li>
-                <li><a href="#">Syarat & Ketentuan</a></li>
-                <li><a href="#">Privasi</a></li>
-            </ul>
-        </div>
-        <div>
-            <h4>Sosial Media</h4>
-            <ul>
-                <li><a href="#">Instagram</a></li>
-                <li><a href="#">TikTok</a></li>
-                <li><a href="#">YouTube</a></li>
-            </ul>
-        </div>
-    </div>
-
-    <div class="copyright">
-        © 2025 Commenta. All Rights Reserved.
-    </div>
+<div class="container footer-grid">
+<div><h3>Commenta</h3><p>Platform engagement terpercaya.</p></div>
+<div><h4>Menu</h4><ul><li><a href="#">Tentang</a></li><li><a href="#">Syarat</a></li><li><a href="#">Privasi</a></li></ul></div>
+<div><h4>Sosial</h4><ul><li><a href="#">Instagram</a></li><li><a href="#">TikTok</a></li><li><a href="#">YouTube</a></li></ul></div>
+</div>
+<div class="copyright">© 2025 Commenta</div>
 </footer>
+
+<script>
+window.addEventListener("scroll",()=>{
+document.querySelector(".navbar")
+.classList.toggle("scrolled",window.scrollY>20)
+})
+</script>
 
 </body>
 </html>
+    
