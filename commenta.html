@@ -19,7 +19,7 @@ body{
 /* GLOBAL */
 .container{width:90%;max-width:1200px;margin:auto}
 .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:25px}
-.section-title{text-align:center;font-size:2.2rem;margin-bottom:50px}
+.section-title{text-align:center;font-size:2.2rem;margin-bottom:40px}
 
 /* NAVBAR */
 .navbar{
@@ -27,11 +27,9 @@ body{
     top:0;
     width:100%;
     z-index:1000;
-    background:rgba(13,71,161,0.9);
+    background:rgba(13,71,161,0.95);
     backdrop-filter:blur(10px);
-    transition:.3s;
 }
-.navbar.scrolled{box-shadow:0 4px 20px rgba(0,0,0,.15)}
 .navbar .container{
     display:flex;
     justify-content:space-between;
@@ -40,10 +38,11 @@ body{
 }
 .logo{
     color:#fff;
-    font-size:1.8rem;
+    font-size:1.6rem;
     font-weight:700;
-    letter-spacing:1px;
 }
+
+/* MENU */
 .nav-menu{
     list-style:none;
     display:flex;
@@ -53,107 +52,78 @@ body{
 .nav-menu a{
     color:#fff;
     font-weight:500;
-    transition:.3s;
 }
-.nav-menu a:hover{color:#ffccbc}
+
+/* HAMBURGER */
+.hamburger{
+    display:none;
+    font-size:1.8rem;
+    color:#fff;
+    cursor:pointer;
+}
 
 /* BUTTON */
 .btn-primary,.btn-outline{
-    padding:9px 18px;
+    padding:8px 16px;
     border-radius:30px;
     transition:.3s;
+    display:inline-block;
 }
-.btn-primary{
-    background:#ff5722;
-    color:#fff;
-}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(255,87,34,.4)}
-.btn-outline{
-    border:1px solid #fff;
-    color:#fff;
-}
-.btn-outline:hover{background:#fff;color:#0d47a1}
+.btn-primary{background:#ff5722;color:#fff}
+.btn-outline{border:1px solid #fff;color:#fff}
 
 /* HERO */
 .hero{
-    padding:140px 0 90px;
+    padding:130px 0 80px;
     background:linear-gradient(135deg,#1976d2,#0d47a1);
     color:#fff;
     text-align:center;
 }
-.hero h1{
-    font-size:3rem;
-    margin-bottom:20px;
-    animation:fadeUp 1s ease;
-}
-.hero p{
-    max-width:700px;
-    margin:auto auto 30px;
-    opacity:.95;
-    animation:fadeUp 1.3s ease;
-}
-.hero-btn a{margin:0 10px}
+.hero h1{font-size:2.6rem;margin-bottom:15px}
+.hero p{max-width:700px;margin:auto auto 25px}
+.hero-btn a{margin:5px}
 
 /* STATS */
-.stats{
-    background:#fff;
-    padding:70px 0;
-}
+.stats{background:#fff;padding:60px 0}
 .stat-box{
     text-align:center;
     padding:25px;
     border-radius:16px;
-    transition:.3s;
+    background:#fff;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
 }
-.stat-box:hover{
-    transform:translateY(-8px);
-    box-shadow:0 15px 30px rgba(0,0,0,.1);
-}
-.stat-box h2{
-    color:#1976d2;
-    font-size:2.4rem;
-}
+.stat-box h2{color:#1976d2;font-size:2.3rem}
 
 /* SERVICES */
-.services{padding:90px 0}
+.services{padding:80px 0}
 .service-card{
     background:#fff;
     padding:30px;
     border-radius:18px;
     text-align:center;
     box-shadow:0 10px 25px rgba(0,0,0,.08);
-    transition:.4s;
-}
-.service-card:hover{
-    transform:translateY(-10px);
-    box-shadow:0 20px 40px rgba(0,0,0,.15);
 }
 
 /* HOW IT WORKS */
 .how-it-works{
     background:#eef3fb;
-    padding:90px 0;
+    padding:80px 0;
 }
 .step{
     background:#fff;
     padding:30px;
     border-radius:18px;
     text-align:center;
-    transition:.4s;
-}
-.step:hover{
-    transform:scale(1.05);
 }
 .step span{
     display:inline-block;
-    width:45px;
-    height:45px;
-    line-height:45px;
+    width:42px;
+    height:42px;
+    line-height:42px;
     border-radius:50%;
     background:#1976d2;
     color:#fff;
-    font-weight:bold;
-    margin-bottom:15px;
+    margin-bottom:10px;
 }
 
 /* FOOTER */
@@ -167,27 +137,43 @@ body{
     grid-template-columns:repeat(3,1fr);
     gap:30px;
 }
-.footer a{color:#ffeb3b}
 .footer ul{list-style:none}
-.copyright{
-    text-align:center;
-    margin-top:30px;
-    font-size:.9rem;
-    opacity:.8;
-}
+.footer a{color:#ffeb3b}
+.copyright{text-align:center;margin-top:25px;font-size:.9rem}
 
-/* ANIMATION */
-@keyframes fadeUp{
-    from{opacity:0;transform:translateY(40px)}
-    to{opacity:1;transform:translateY(0)}
-}
+/* ============ MOBILE FIX ============ */
+@media(max-width:768px){
 
-/* RESPONSIVE */
-@media(max-width:900px){
-    .grid-3{grid-template-columns:1fr}
-    .nav-menu{flex-wrap:wrap;justify-content:center}
-    .hero h1{font-size:2.2rem}
-    .hero{padding-top:120px}
+    .grid-3,
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero h1{font-size:2rem}
+
+    /* NAVBAR MOBILE */
+    .hamburger{display:block}
+
+    .nav-menu{
+        position:absolute;
+        top:65px;
+        left:0;
+        width:100%;
+        background:#0d47a1;
+        flex-direction:column;
+        display:none;
+        padding:20px 0;
+    }
+
+    .nav-menu.active{display:flex}
+
+    .nav-menu li{margin:10px 0}
+
+    .btn-primary,
+    .btn-outline{
+        width:80%;
+        text-align:center;
+    }
 }
 </style>
 </head>
@@ -197,7 +183,10 @@ body{
 <header class="navbar">
 <div class="container">
 <div class="logo">Commenta</div>
-<ul class="nav-menu">
+
+<div class="hamburger" onclick="toggleMenu()">☰</div>
+
+<ul class="nav-menu" id="menu">
 <li><a href="#">Home</a></li>
 <li><a href="#">Layanan</a></li>
 <li><a href="#">Cara Kerja</a></li>
@@ -211,7 +200,7 @@ body{
 <section class="hero">
 <div class="container">
 <h1>Bangun Interaksi Nyata di Media Sosial</h1>
-<p>Commenta membantu meningkatkan komentar, engagement, dan kepercayaan audiens dengan cara yang profesional dan aman.</p>
+<p>Commenta membantu meningkatkan komentar, engagement, dan kepercayaan audiens secara profesional.</p>
 <div class="hero-btn">
 <a class="btn-primary" href="#">Mulai Sekarang</a>
 <a class="btn-outline" href="#">Pelajari Lebih Lanjut</a>
@@ -231,7 +220,7 @@ body{
 <div class="container">
 <h2 class="section-title">Layanan Commenta</h2>
 <div class="grid-3">
-<div class="service-card"><h3>Komentar Media Sosial</h3><p>Komentar natural & aman.</p></div>
+<div class="service-card"><h3>Komentar Media Sosial</h3><p>Komentar aman & natural.</p></div>
 <div class="service-card"><h3>Kampanye Engagement</h3><p>Interaksi terukur.</p></div>
 <div class="service-card"><h3>Like & Share</h3><p>Maksimalkan jangkauan.</p></div>
 </div>
@@ -242,9 +231,9 @@ body{
 <div class="container">
 <h2 class="section-title">Cara Kerja</h2>
 <div class="grid-3">
-<div class="step"><span>1</span><h4>Buat Kampanye</h4><p>Masukkan link postingan.</p></div>
-<div class="step"><span>2</span><h4>Distribusi</h4><p>Komentator aktif.</p></div>
-<div class="step"><span>3</span><h4>Hasil</h4><p>Laporan real-time.</p></div>
+<div class="step"><span>1</span><h4>Buat Kampanye</h4></div>
+<div class="step"><span>2</span><h4>Distribusi</h4></div>
+<div class="step"><span>3</span><h4>Hasil</h4></div>
 </div>
 </div>
 </section>
@@ -259,12 +248,10 @@ body{
 </footer>
 
 <script>
-window.addEventListener("scroll",()=>{
-document.querySelector(".navbar")
-.classList.toggle("scrolled",window.scrollY>20)
-})
+function toggleMenu(){
+document.getElementById("menu").classList.toggle("active");
+}
 </script>
 
 </body>
 </html>
-    
